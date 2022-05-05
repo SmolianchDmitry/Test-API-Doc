@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: My API
+  description: Get anything
+  version: 3-oas3-oas3-oas3-oas3-oas3-oas3
+  license:
+    name: Test-API-Doc
+    url: http://localhost:8080/api
+servers:
+  - url: http://localhost:8080/api
+    description: AutoSearch
+paths:
+  /auto-search:
+    get:
+      tags:
+        - Current Data AutoSearch
+      summary: "Для получения списка по поиску выполните этот запрос"
+      description: "Получение списка всех параметров поиска."
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSearchDto'
+        404:
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: ParamAutoSearch not found
+                type: string
+                example: Not found
+
+components:
+  schemas:
+    ParamSearchDto:
+      type: object
+      properties:
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: integer
+        productionYear:
+          type: integer

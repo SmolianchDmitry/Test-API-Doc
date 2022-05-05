@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: "My API"
+  description: "Get anything"
+  version: "1.1"
+  termsOfService: "https://terms"
+  contact:
+    name: "API"
+    url: "https://api"
+    email: "test@test.com"
+  license:
+    name: "Test-API-Doc"
+    url: "https://price"
+servers:
+  - url: https://api/
+    description: AutoSearch
+paths:
+  /auto-search:
+    get:
+components:
+  schemas:
+    ParamSearchDto:
+      Properties:
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+        productionYear:
+          type: integer
