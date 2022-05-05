@@ -42,6 +42,6 @@ components:
         model:
           type: string
         color:
-          type: integer
+          type: string
         productionYear:
           type: integer
