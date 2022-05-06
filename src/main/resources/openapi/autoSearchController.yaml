@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  title: My API
+  description: Tutorials on Spring Boot and Java
+  version: 0.0.1-SNAPSHOT
+  license:
+    name: Test-API-Doc
+    url: http://localhost:8080/api
+servers:
+  - url: http://localhost:8080/api
+    description: AutoSearch
+paths:
+  /auto-search:
+    post:
+      tags:
+        - Data AutoSearch
+      summary: "Для сохранения запроса по поиску выполните этот запрос"
+      description: "Сохранение параметров поиска"
+      operationId: createParamAutoSearch
+      requestBody:
+        description: "Создание объекта ParamAutoSearch"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParamSearchDto'
+        required: true
+      responses:
+        default:
+          description: successful operation
+          content: { }
+    get:
+      tags:
+        - Data AutoSearch
+      summary: "Для получения списка по поиску выполните этот запрос"
+      description: "Получение списка всех параметров поиска."
+      operationId: getParamAutoSearch
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSearchDto'
+        404:
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: ParamAutoSearch not found
+                type: string
+                example: Not found
+
+  /auto-search/{id}:
+    put:
+      tags:
+        - Data AutoSearch
+      summary: "Изменение параметров поиска"
+      description: "Для изменения параметров поиска выпоните этот запрос"
+      operationId: updateParamAutoSearch
+      parameters:
+      - name: id
+        in: path
+        description: "Id параметра поиска"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        description: Updated user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ParamSearchDto'
+        required: true
+      responses:
+        "200":
+          description: "Операция выполнена успешно"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSearchDto'
+        "400":
+          description: "Операция не выполнена"
+          content: { }
+        "404":
+          description: "Парметра поиска с таким id не найдено"
+          content: { }
+
+    delete:
+      tags:
+      - Data AutoSearch
+      summary: "Удаление параметров поиска по id"
+      description: "Для удаления параметров поиска по id выполните этот запрос"
+      operationId: deleteParamAutoSearch
+      parameters:
+      - name: id
+        in: path
+        description: "Id параметра поиска"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "201":
+          description: "Операция выполнена успешно"
+          content: {}
+        "400":
+          description: "Id указано не верно"
+          content: {}
+        "404":
+          description: "Параметры поиска с таким id не найдены"
+          content: {}
+components:
+  schemas:
+    ParamSearchDto:
+      type: object
+      properties:
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+        productionYear:
+          type: integer
