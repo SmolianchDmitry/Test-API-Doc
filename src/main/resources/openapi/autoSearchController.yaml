@@ -33,7 +33,7 @@ paths:
         - Data AutoSearch
       summary: "Для получения списка по поиску выполните этот запрос"
       description: "Получение списка всех параметров поиска."
-      operationId: getParamAutoSearch
+      operationId: getAll
       responses:
         200:
           description: Successful response
