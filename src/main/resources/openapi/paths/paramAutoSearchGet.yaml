@@ -1,0 +1,23 @@
+paths:
+  auto-search:
+    get:
+      tags:
+        - Data AutoSearch
+      summary: "Для получения списка по поиску выполните этот запрос"
+      description: "Получение списка всех параметров поиска."
+      operationId: getAll
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '../models/paramSearchDto.yaml#/components/schemas/ParamSearchDto'
+        404:
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: ParamAutoSearch not found
+                type: string
+                example: Not found

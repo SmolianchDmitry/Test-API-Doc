@@ -1,0 +1,13 @@
+components:
+  schemas:
+    ParamSearchDto:
+      type: object
+      properties:
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+        productionYear:
+          type: integer

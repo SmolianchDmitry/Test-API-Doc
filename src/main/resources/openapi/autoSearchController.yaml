@@ -22,34 +22,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ParamSearchDto'
+              $ref: './models/paramSearchDto.yaml#/components/schemas/ParamSearchDto'
         required: true
       responses:
         default:
           description: successful operation
           content: { }
-    get:
-      tags:
-        - Data AutoSearch
-      summary: "Для получения списка по поиску выполните этот запрос"
-      description: "Получение списка всех параметров поиска."
-      operationId: getAll
-      responses:
-        200:
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSearchDto'
-        404:
-          description: Not found response
-          content:
-            text/plain:
-              schema:
-                title: ParamAutoSearch not found
-                type: string
-                example: Not found
-
+    $ref: './paths/paramAutoSearchGet.yaml#/paths/auto-search'
   /auto-search/{id}:
     put:
       tags:
@@ -71,7 +50,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/ParamSearchDto'
+              $ref: './models/paramSearchDto.yaml#/components/schemas/ParamSearchDto'
         required: true
       responses:
         "200":
@@ -79,7 +58,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ParamSearchDto'
+                $ref: './models/paramSearchDto.yaml#/components/schemas/ParamSearchDto'
         "400":
           description: "Операция не выполнена"
           content: { }
@@ -92,7 +71,7 @@ paths:
       - Data AutoSearch
       summary: "Удаление параметров поиска по id"
       description: "Для удаления параметров поиска по id выполните этот запрос"
-      operationId: deleteParamAutoSearch
+      operationId: deleteParamSearchById
       parameters:
       - name: id
         in: path
@@ -112,16 +91,3 @@ paths:
         "404":
           description: "Параметры поиска с таким id не найдены"
           content: {}
-components:
-  schemas:
-    ParamSearchDto:
-      type: object
-      properties:
-        brand:
-          type: string
-        model:
-          type: string
-        color:
-          type: string
-        productionYear:
-          type: integer
