@@ -30,7 +30,7 @@ paths:
           content: {}
       x-codegen-request-body-name: body
   /user/{username}:
-    $ref: './paths/userGet.yaml#/paths/~1user~1{username}'
+    $ref: './paths/userGet.yaml'
     put:
       tags:
       - user

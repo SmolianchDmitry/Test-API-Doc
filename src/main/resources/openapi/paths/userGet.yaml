@@ -1,5 +1,3 @@
-paths:
-  /user/{username}:
     get:
       tags:
         - user
